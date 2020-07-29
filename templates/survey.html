@@ -1,0 +1,84 @@
+<html>
+
+<head>
+	<title>Welcome!</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}?q={{ time }}" />
+</head>
+
+<body class= "bg-dark b1">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/"><i class="fa fa-search" aria-hidden="true"></i>Stock Finder </a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/search">Stocks Current Price</a>
+				</li>
+                <li class="nav-item active">
+					<a class="nav-link" href="/survey">Find Your Stocks</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+    <div class = "container text-align-center">
+	    <h1>Hello Investor!</h1>
+
+        <div class = "text-align-center">
+            <form method="post" action="/result">
+                <p>Which type of investments are you interested in?</p>
+                <input type="checkbox" id="stock1" name="investment" value="Stocks">
+                <label for="stock1">Stocks</label><br>
+                <input type="checkbox" id="bond1"name="investment" value="Bonds">
+                <label for="bond1">Bonds</label><br>
+                <input type="checkbox" id="fund1" name="investment" value="Funds">
+                <label for="fund1">Funds</label><br>
+
+                <p>Which industries are you interested in?</p>
+                <input type="radio" id="industry1" name="field" value="Technology">
+                <label for="industry1">Technology</label><br>
+                <input type="radio" id="industry2" name="field" value="Real Estate">
+                <label for="estate">Real Estate</label><br>
+                <input type="radio" id="industry3" name="field" value="Health care">
+                <label for="health">HealthCare</label><br>
+                <input type="radio" id="industry4" name="field" value="Telecommunication">
+                <label for="telcom">Telecommunication</label><br>
+                <input type="radio" id="industry5" name="field" value="Energy">
+                <label for="energy">Energy</label><br>
+
+
+                <p>What's your budget?</p>
+                <label for="budget">Budget: </label>
+                <input type="number" id="budget"name="budget" min = "1">
+
+                <!-- <p>Are you a long-term investor or short-term investor?</p>
+                <input type="radio" id="long_term" name="type_investor" value="Long Term">
+                <label for="long_term">Long Term Investor</label><br>
+                <input type="radio" id="short_term" name="type_investor" value="Short Term">
+                <label for="short_term">Short Term Investor</label><br> -->
+
+                <!-- <p>Are you interested in receiving dividends?</p>
+                <input type="radio" id="yesDividend" name="dividend" value="yes">
+                <label for="yesDividend">Yes</label><br>
+                <input type="radio" id="noDividend" name="dividend" value="no">
+                <label for="noDividend">No</label><br><br> -->
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -21,7 +21,25 @@ finnhub_client = os.getenv("finnhub_key")
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html", time=datetime.now())
+    return render_template("index.html",time=datetime.now())
+    
+@app.route('/survey')
+def survey():
+    return render_template("survey.html", time=datetime.now())
+
+@app.route('/search')
+def search():
+    return render_template("search.html", time=datetime.now())
+
+@app.route('/ticker',  methods=['GET','POST'])
+def ticker():
+    if request.method == "POST":
+        ticker = request.form.get("ticker").upper()
+        data = requests.get(f'https://finnhub.io/api/v1/quote?symbol={ticker}&token={finnhub_client}').json()
+        currentPrice = data['c']
+        print(currentPrice)
+
+    return render_template("ticker.html",ticker=ticker,currentPrice=currentPrice,time=datetime.now())
 
 @app.route('/result',  methods=['GET','POST'])
 def result():
@@ -48,7 +66,7 @@ def result():
         elif field[0] == 'Energy':
             company = 'NEE'
 
-        # data = requests.get(f'https://finnhub.io/api/v1/quote?symbol=AAPL&token={finnhub_client}').json()
+        
         # data1 = requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol=UNH&token={finnhub_client}').json()
         print(company)
         print(field)
