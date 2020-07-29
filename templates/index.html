@@ -7,10 +7,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Results</title>
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link href="static/style.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}?q={{ time }}" /> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}?q={{ time }}" />
+
 	<!-- Custom Fonts -->
 
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -18,14 +22,14 @@
 		type="text/css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
 		integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel=“stylesheet” href=“https://use.fontawesome.com/releases/v5.7.2/css/all.css” 
-        integrity=“sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr” crossorigin=“anonymous”/>
+	<!-- <link rel=“stylesheet” href=“https://use.fontawesome.com/releases/v5.7.2/css/all.css” 
+        integrity=“sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr” crossorigin=“anonymous”/> -->
 
 </head>
 
-<body class="bg-dark b1">
+<body class="bg-light">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="/"><i class="fa fa-money" aria-hidden="true"></i>Stock Finder </a>
+		<a class="navbar-brand" href="/"><i class="fa fa-credit-card" aria-hidden="true"></i> Stock Finder </a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -38,14 +42,34 @@
 				<li class="nav-item active">
 					<a class="nav-link" href="/search">Stocks Current Price</a>
 				</li>
-                <li class="nav-item active">
+				<li class="nav-item active">
 					<a class="nav-link" href="/survey">Find Your Stocks</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
-    <h1>Welcome to the Stock Finder!</h1>
+	<h1>Welcome to the Stock Finder!</h1>
+	<div class="hero-image">
+		<div class="card" style="width: 30rem;">
+			<div class="card-body">
+				<h5 class="card-title" id="card-title">Stock Finder</h5>
+				<p class="card-text">You could use this stock finder to get real time stock prices
+					and we could recommend you some stocks based on your interest!</p>
+				<a href="#" class="btn btn-primary">Sign Up</a>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+	</script>
 
 
 </body>
