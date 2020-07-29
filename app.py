@@ -4,7 +4,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from datetime import datetime
-import finnhub
+# import finnhub
 import requests
 import os
 from dotenv import load_dotenv
