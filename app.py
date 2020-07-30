@@ -59,7 +59,8 @@ def result():
         stats = []
         affordStats = []
         names = []
-        affordNames = []
+        companies = []
+        
 
         if field[0] == 'Technology':
             company = 'MSFT'
@@ -80,12 +81,21 @@ def result():
 
         companies = requests.get(f'https://finnhub.io/api/v1/stock/peers?symbol={company}&token={finnhub_client}').json()
         # goes through every company in the companies list
+        # for i in range(0,len(companies)-2):
+        #     # adds each company's price dictionary into a list called prices
+        #     # adds each company's low,high, and annual return into stats list
+        #     c=companies[i]
+        #     print(c)
         for c in companies:
             # adds each company's price dictionary into a list called prices
             # adds each company's low,high, and annual return into stats list
+            print(c)
             prices.append(requests.get(f'https://finnhub.io/api/v1/quote?symbol={c}&token={finnhub_client}').json())
             names.append(requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol={c}&token={finnhub_client}').json())
             stats.append(requests.get(f'https://finnhub.io/api/v1/stock/metric?symbol={c}&metric=all&token={finnhub_client}').json())
+            print(prices)
+            print(names)
+            print(stats)
 
         for i in range (0,len(prices)):
                 print(prices[i]['c'])
@@ -105,10 +115,11 @@ def result():
         # print(data1)
         # print(data)
         print(companies)
-        print(affordNames)
+        print(affordable)
         print(aPrices)
+        
 
-        return render_template('results.html',affordNames=affordNames,names=names,affordStats=affordStats,stats=stats,aPrices=aPrices,prices=prices,investment=investment,field=field,budget=budget,companies=companies,affordable=affordable,time=datetime.now())
+        return render_template('results.html',names=names,affordStats=affordStats,stats=stats,aPrices=aPrices,prices=prices,investment=investment,field=field,budget=budget,companies=companies,affordable=affordable,time=datetime.now())
         
     else:
         return render_template('results.html',time=datetime.now())
