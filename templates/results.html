@@ -66,8 +66,9 @@
 				<h2> Below are some of the {{field[0]}} stocks you could buy based on your budget.</h2>
 				<ul>
 					{% for i in affordable %}
-					<li>Ticker Symbol: {{i}}</li>
-                    <li>Company Name: {{affordNames[loop.index-1]['name']}}</li>
+					<li>Ticker Symbol: {{i['ticker']}}</li>
+                    
+                    <li>Company Name: {{i['name']}}</li>
                     <li>Current Price: ${{aPrices[loop.index-1]['c']}}</li>
                     <li>52 Week Low: ${{affordStats[loop.index-1]['metric']['52WeekLow']}} </li>
                     <li>52 Week High: ${{affordStats[loop.index-1]['metric']['52WeekHigh']}} </li>

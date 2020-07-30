@@ -38,6 +38,7 @@ def ticker():
         data = requests.get(f'https://finnhub.io/api/v1/quote?symbol={ticker}&token={finnhub_client}').json()
         currentPrice = data['c']
         print(currentPrice)
+        
 
     return render_template("ticker.html",ticker=ticker,currentPrice=currentPrice,time=datetime.now())
 
@@ -89,12 +90,16 @@ def result():
         for i in range (0,len(prices)):
                 print(prices[i]['c'])
                 if float(budget[0]) > prices[i]['c']:
-                    affordable.append(companies[i])
-        print(affordable)
-        for a in affordable:
-            aPrices.append(requests.get(f'https://finnhub.io/api/v1/quote?symbol={a}&token={finnhub_client}').json())
-            affordStats.append(requests.get(f'https://finnhub.io/api/v1/stock/metric?symbol={a}&metric=all&token={finnhub_client}').json())
-            affordNames.append(requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol={a}&token={finnhub_client}').json())
+                    affordable.append(names[i])
+                    aPrices.append(prices[i])
+                    affordStats.append(stats[i])
+
+        # print(affordable)
+        # for a in affordable:
+        #     aPrices.append(requests.get(f'https://finnhub.io/api/v1/quote?symbol={a}&token={finnhub_client}').json())
+        #     affordStats.append(requests.get(f'https://finnhub.io/api/v1/stock/metric?symbol={a}&metric=all&token={finnhub_client}').json())
+        #     affordNames.append(requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol={a}&token={finnhub_client}').json())
+
         # price = data['c']
         # industry = data1['finnhubIndustry']
         # print(data1)
