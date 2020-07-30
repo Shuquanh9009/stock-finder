@@ -49,34 +49,36 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<h2> Here is a list of some of the stocks within the {{field[0]}} industry.</h2>
-				<ul>
+                <br></br>
+				
 					{% for c in companies %}
-                    
-					<li>Ticker Symbol: {{c}}</li>
-                    <li>Company Name: {{names[loop.index-1]['name']}}</li>
-                    <li>Current Price: ${{prices[loop.index-1]['c']}} </li>
-                    <li>52 Week Low: ${{stats[loop.index-1]['metric']['52WeekLow']}}</li>
-                    <li>52 Week High: ${{stats[loop.index-1]['metric']['52WeekHigh']}}</li>
-                    <li>52 Week Price Return Daily: {{stats[loop.index-1]['metric']['52WeekPriceReturnDaily']}}%<br></br></li>
-
+                        <h4>{{names[loop.index-1]['name']}}</h4>
+                        <ul>
+                            <li>Ticker Symbol: {{c}}</li>
+                            <li>Current Price: ${{prices[loop.index-1]['c']}} </li>
+                            <li>52 Week Low: ${{stats[loop.index-1]['metric']['52WeekLow']}}</li>
+                            <li>52 Week High: ${{stats[loop.index-1]['metric']['52WeekHigh']}}</li>
+                            <li>52 Week Price Return Daily: {{stats[loop.index-1]['metric']['52WeekPriceReturnDaily']}}%<br></br></li>
+                        </ul>
 					{% endfor%}
-				</ul>
+				
 			</div>
 			<div class="col-sm-6">
 				<h2> Below are some of the {{field[0]}} stocks you could buy based on your budget.</h2>
-				<ul>
-					{% for i in affordable %}
+                <br></br>
+                {% for i in affordable %}
+                    <h4>{{i['name']}}</h4>
+				    <ul>
+					
 					<li>Ticker Symbol: {{i['ticker']}}</li>
-                    
-                    <li>Company Name: {{i['name']}}</li>
                     <li>Current Price: ${{aPrices[loop.index-1]['c']}}</li>
                     <li>52 Week Low: ${{affordStats[loop.index-1]['metric']['52WeekLow']}} </li>
                     <li>52 Week High: ${{affordStats[loop.index-1]['metric']['52WeekHigh']}} </li>
                     <li>52 Week Price Return Daily: {{affordStats[loop.index-1]['metric']['52WeekPriceReturnDaily']}}%<br></br></li>
 
-
-					{% endfor%}
-				</ul>
+                    </ul>
+				{% endfor%}
+				    
 			</div>
 
 		</div>
