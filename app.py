@@ -54,6 +54,11 @@ def result():
         company = ''
         prices = []
         affordable = []
+        aPrices = []
+        stats = []
+        affordStats = []
+        names = []
+        affordNames = []
 
         if field[0] == 'Technology':
             company = 'MSFT'
@@ -65,31 +70,40 @@ def result():
             company = 'CHTR'
         elif field[0] == 'Energy':
             company = 'NEE'
-
         
-        # data1 = requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol=UNH&token={finnhub_client}').json()
         print(company)
         print(field)
+
+        # name = requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol=UNH&token={finnhub_client}').json()
+       
 
         companies = requests.get(f'https://finnhub.io/api/v1/stock/peers?symbol={company}&token={finnhub_client}').json()
         # goes through every company in the companies list
         for c in companies:
             # adds each company's price dictionary into a list called prices
+            # adds each company's low,high, and annual return into stats list
             prices.append(requests.get(f'https://finnhub.io/api/v1/quote?symbol={c}&token={finnhub_client}').json())
+            names.append(requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol={c}&token={finnhub_client}').json())
+            stats.append(requests.get(f'https://finnhub.io/api/v1/stock/metric?symbol={c}&metric=all&token={finnhub_client}').json())
+
         for i in range (0,len(prices)):
                 print(prices[i]['c'])
                 if float(budget[0]) > prices[i]['c']:
                     affordable.append(companies[i])
         print(affordable)
-
-
+        for a in affordable:
+            aPrices.append(requests.get(f'https://finnhub.io/api/v1/quote?symbol={a}&token={finnhub_client}').json())
+            affordStats.append(requests.get(f'https://finnhub.io/api/v1/stock/metric?symbol={a}&metric=all&token={finnhub_client}').json())
+            affordNames.append(requests.get(f'https://finnhub.io/api/v1/stock/profile2?symbol={a}&token={finnhub_client}').json())
         # price = data['c']
         # industry = data1['finnhubIndustry']
         # print(data1)
         # print(data)
         print(companies)
+        print(affordNames)
+        print(aPrices)
 
-        return render_template('results.html',investment=investment,field=field,budget=budget,companies=companies,affordable=affordable,time=datetime.now())
+        return render_template('results.html',affordNames=affordNames,names=names,affordStats=affordStats,stats=stats,aPrices=aPrices,prices=prices,investment=investment,field=field,budget=budget,companies=companies,affordable=affordable,time=datetime.now())
         
     else:
         return render_template('results.html',time=datetime.now())

@@ -42,7 +42,8 @@
 		</div>
 	</nav>
 	<div class="container-fluid text-align-center head1">
-		<h1>Here are your results</h1>
+		<h1>Results</h1>
+        
 	</div>
 	<div class="container text-align-container">
 		<div class="row">
@@ -50,7 +51,14 @@
 				<h2> Here is a list of some of the stocks within the {{field[0]}} industry.</h2>
 				<ul>
 					{% for c in companies %}
-					<li> {{c}}</li>
+                    
+					<li>Ticker Symbol: {{c}}</li>
+                    <li>Company Name: {{names[loop.index-1]['name']}}</li>
+                    <li>Current Price: ${{prices[loop.index-1]['c']}} </li>
+                    <li>52 Week Low: ${{stats[loop.index-1]['metric']['52WeekLow']}}</li>
+                    <li>52 Week High: ${{stats[loop.index-1]['metric']['52WeekHigh']}}</li>
+                    <li>52 Week Price Return Daily: {{stats[loop.index-1]['metric']['52WeekPriceReturnDaily']}}%<br></br></li>
+
 					{% endfor%}
 				</ul>
 			</div>
@@ -58,13 +66,29 @@
 				<h2> Below are some of the {{field[0]}} stocks you could buy based on your budget.</h2>
 				<ul>
 					{% for i in affordable %}
-					<li>{{i}}</li>
+					<li>Ticker Symbol: {{i}}</li>
+                    <li>Company Name: {{affordNames[loop.index-1]['name']}}</li>
+                    <li>Current Price: ${{aPrices[loop.index-1]['c']}}</li>
+                    <li>52 Week Low: ${{affordStats[loop.index-1]['metric']['52WeekLow']}} </li>
+                    <li>52 Week High: ${{affordStats[loop.index-1]['metric']['52WeekHigh']}} </li>
+                    <li>52 Week Price Return Daily: {{affordStats[loop.index-1]['metric']['52WeekPriceReturnDaily']}}%<br></br></li>
+
+
 					{% endfor%}
 				</ul>
 			</div>
 
 		</div>
 	</div>
+    <div class="container-fluid text-align-center head1">
+		<p>All datas presented in our websites does not 100% reflect the real up to date actual market price. Our content is intended to be used and must be used for informational purposes only.
+            It is very important to do your own analysis before making any investment based on your own personal circumstances. You should take independent financial advice from a professional 
+            in connection with, or independently research and verify, any information that you find on our Website and wish to rely upon, whether for the purpose of making an investment decision 
+            or otherwise.  
+        </p>
+        
+	</div>
+    
 
 	<!-- {% for i in investment %}
 	<p> {{i}}</p>

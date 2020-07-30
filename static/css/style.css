@@ -64,3 +64,6 @@ body, html {
     background-color = black;
     color = green;
 }
+.solid {
+    border-style: solid;
+}
