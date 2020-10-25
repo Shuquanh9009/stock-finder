@@ -63,7 +63,7 @@ def login():
                 return "success"
         
         # if no successful match, display an error 
-        return redriect('/index')
+        return redirect('/index')
 
     
 @app.route('/survey')
